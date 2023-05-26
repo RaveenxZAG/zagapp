@@ -12,4 +12,4 @@ steps:
     entrypoint: 'bash'
     args:
       - '-c'
-      - 'npm install mocha && npm test & npm stop'
+      - 'npm install mocha && npm test'

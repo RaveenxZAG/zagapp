@@ -4,8 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "mocha app.test.js",
-        "stop": "npm stop"
+        "test": "mocha app.test.js --exit"
     },
     "keywords": [],
     "author": "",
