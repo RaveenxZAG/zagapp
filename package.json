@@ -1,15 +1,19 @@
 {
-    "name": "htmlRender",
+    "name": "app",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "mocha app.test.js"
+      "test": "mocha app.test.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "express": "^4.16.4"
+      "express": "^4.16.4"
+    },
+    "devDependencies": {
+      "mocha": "^9.0.0"
     }
-}
+  }
+  
