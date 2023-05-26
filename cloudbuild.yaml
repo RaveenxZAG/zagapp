@@ -9,7 +9,7 @@ steps:
 
   # Run unit tests
   - name: 'gcr.io/sit737-23t1-silman-ara-7d36463/zagapp'
-    entrypoint: 'npm'
+    entrypoint: 'bash'
     args:
-      - 'test'
-
+      - '-c'
+      - 'npm install mocha && npm test'
