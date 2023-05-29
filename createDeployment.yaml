@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zagdeployment
+  name: mydeployment
   labels:
     app: zagapp
 spec:
@@ -16,7 +16,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: zagnode
+      - name: mynode
         image: gcr.io/sit737-23t1-silman-ara-7d36463/zagapp
         ports:
         - containerPort: 8080
