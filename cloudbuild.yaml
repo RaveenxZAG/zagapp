@@ -9,7 +9,34 @@ steps:
 
   # Run unit tests
   - name: 'gcr.io/sit737-23t1-silman-ara-7d36463/zagapp'
-    entrypoint: 'npm'
+    entrypoint: 'bash'
     args:
-      - 'test'
+      - '-c'
+      - 'npm install mocha && npm test'
 
+  # Push the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/sit737-23t1-silman-ara-7d36463/zagapp'
+
+  # Authentication
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'container'
+      - 'clusters'
+      - 'get-credentials'
+      - 'hello-cluster'
+      - '--region'
+      - 'australia-southeast2-a'
+
+  # Deploy with kubectl
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - 'set'
+      - 'image'
+      - 'deployment/zagdeployment'
+      - 'zagnode=gcr.io/sit737-23t1-silman-ara-7d36463/zagapp'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=australia-southeast2-a'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cluster'

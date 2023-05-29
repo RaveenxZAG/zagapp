@@ -17,4 +17,13 @@ const server = app.listen(port, function () {
   console.log('Running at Port ' + port);
 });
 
+// Gracefully shut down the server
+process.on('SIGINT', function () {
+  console.log('Shutting down server...');
+  server.close(function () {
+    console.log('Server stopped.');
+    process.exit(0);
+  });
+});
+
 module.exports = app;
