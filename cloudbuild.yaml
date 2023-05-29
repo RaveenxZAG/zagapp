@@ -30,6 +30,12 @@ steps:
       - '--region'
       - 'australia-southeast2-a'
 
+  - name: 'gcr.io/cloud-builders/kubectl'
+    env:
+      - 'CLOUDSDK_COMPUTE_REGION=australia-southeast2-a'
+      - 'CLOUDSDK_COMPUTE_ZONE=australia-southeast2-a'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cluster'
+
   # Deploye the kubectl
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
