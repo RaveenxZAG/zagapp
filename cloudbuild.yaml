@@ -30,16 +30,13 @@ steps:
       - '--region'
       - 'australia-southeast2-a'
 
-  - name: 'gcr.io/cloud-builders/kubectl'
-    env:
-      - 'CLOUDSDK_COMPUTE_REGION=australia-southeast2-a'
-      - 'CLOUDSDK_COMPUTE_ZONE=australia-southeast2-a'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cluster'
-
-  # Deploye the kubectl
+  # Deploy with kubectl
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
-      - 'create'
-      - 'deployment'
-      - 'hello-server'
-      - '--image=gcr.io/sit737-23t1-silman-ara-7d36463/zagapp'
+      - 'set'
+      - 'image'
+      - 'deployment/zagdeployment'
+      - 'gcr.io/sit737-23t1-silman-ara-7d36463/zagapp'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=australia-southeast2-a'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cluster'
